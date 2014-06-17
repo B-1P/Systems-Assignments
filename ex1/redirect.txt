@@ -1,0 +1,21 @@
+Script started on Tue Jan 14 22:53:35 2014
+]0;g3bhawan@redwolf:~/csc209labs[22:53:35] [33m^_^[0m[g3bhawan@redwolf:~/csc209labs]$ ./o getinfo.py < input 
+Please enter your name:
+Please enter your classes this term:
+Hi Maria Klawe, are you enjoying CSC209?
+]0;g3bhawan@redwolf:~/csc209labs[22:53:54] [33m^_^[0m[g3bhawan@redwolf:~/csc209labs]$ [K./getinfo.py   > out1
+Bhawan
+Csc^?^?^?^?^?^?CSC209
+]0;g3bhawan@redwolf:~/csc209labs[22:54:56] [33m^_^[0m[g3bhawan@redwolf:~/csc209labs]$ [Kcat out1 
+Please enter your name:
+Please enter your classes this term:
+Hi Bhawan, are you enjoying CscCSC209?
+]0;g3bhawan@redwolf:~/csc209labs[22:54:59] [33m^_^[0m[g3bhawan@redwolf:~/csc209labs]$ ./getinfo.py &> out2
+
+
+]0;g3bhawan@redwolf:~/csc209labs[22:55:26] [31mO_O[0m[g3bhawan@redwolf:~/csc209labs]$ [K
+]0;g3bhawan@redwolf:~/csc209labs[22:55:27] [31mO_O[0m[g3bhawan@redwolf:~/csc209labs]$ ./p getinfo.py <badinput > &>out
+]0;g3bhawan@redwolf:~/csc209labs[22:55:54] [31mO_O[0m[g3bhawan@redwolf:~/csc209labs]$ [Kexit
+exit
+
+Script done on Tue Jan 14 22:55:59 2014

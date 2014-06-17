@@ -1,0 +1,323 @@
+Script started on Mon Jan 20 19:04:06 2014
+]0;g3bhawan@greywolf:~/csc209labs/e2[19:04:06] [33m^_^[0m[g3bhawan@greywolf:~/csc209labs/e2]$ gdb overflow
+GNU gdb (Ubuntu/Linaro 7.4-2012.04-0ubuntu2.1) 7.4-2012.04
+Copyright (C) 2012 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+For bug reporting instructions, please see:
+<http://bugs.launchpad.net/gdb-linaro/>...
+Reading symbols from /h/u11/g4/00/g3bhawan/csc209labs/e2/overflow...done.
+(gdb) break main
+Breakpoint 1 at 0x40058c: file overflow.c, line 7.
+(gdb) run
+Starting program: /h/u11/g4/00/g3bhawan/csc209labs/e2/overflow 
+
+Breakpoint 1, main () at overflow.c:7
+7           int index = 0;
+(gdb) display a>  i>
+A syntax error in expression, near `'.
+(gdb) next
+9           int k = 10;
+(gdb) nextdisplay i>  k>
+A syntax error in expression, near `'.
+(gdb) display k> 
+1: k = 32767
+(gdb) dispaly i
+Undefined command: "dispaly".  Try "help".
+(gdb) display i
+2: i = -5184
+(gdb) display j
+3: j = 0
+(gdb) display SIZE
+No symbol "SIZE" in current context.
+(gdb) next
+10          int a[SIZE] = {0, 0, 0, 0};
+3: j = 0
+2: i = -5184
+1: k = 10
+(gdb) next    display a
+4: a = {0, 0, 4195488, 0}
+(gdb) next
+11          int j = 10;
+4: a = {0, 0, 0, 0}
+3: j = 0
+2: i = -5184
+1: k = 10
+(gdb) next
+13          printf("Address of the variables:\n");
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+Address of the variables:
+14          printf("%lx -> &j\n", (unsigned long)&j);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+7fffffffead8 -> &j
+15          for(index = 0; index < SIZE; index++) {
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+16              printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+7fffffffeac0 -> &a[0]
+15          for(index = 0; index < SIZE; index++) {
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+16              printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+7fffffffeac4 -> &a[1]
+15          for(index = 0; index < SIZE; index++) {
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+16              printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+7fffffffeac8 -> &a[2]
+15          for(index = 0; index < SIZE; index++) {
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+16              printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+7fffffffeacc -> &a[3]
+15          for(index = 0; index < SIZE; index++) {
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+19          printf("%lx -> &k\n", (unsigned long)&k);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+7fffffffead4 -> &k
+20          printf("%lx -> &i\n", (unsigned long)&i);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+7fffffffead0 -> &i
+21          printf("\n");
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+
+24          printf("Initial values:");
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+25          printf("i = %d, j = %d, k = %d\n", i, j, k);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+Initial values:i = -5184, j = 10, k = 10
+26          printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+a = {0, 0, 0, 0}
+27          printf("\n");
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+
+30          for(i = 0; i < OVERFLOW; i++) {
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = -5184
+1: k = 10
+(gdb) next
+31              a[i] = i * 10;
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = 0
+1: k = 10
+(gdb) next
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = 0
+1: k = 10
+(gdb) next
+33              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = 0
+1: k = 10
+(gdb) next
+i = 0, j = 10, k = 10           a = {0, 0, 0, 0}
+30          for(i = 0; i < OVERFLOW; i++) {
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = 0
+1: k = 10
+(gdb) next
+31              a[i] = i * 10;
+4: a = {0, 0, 0, 0}
+3: j = 10
+2: i = 1
+1: k = 10
+(gdb) next
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+4: a = {0, 10, 0, 0}
+3: j = 10
+2: i = 1
+1: k = 10
+(gdb) next
+33              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+4: a = {0, 10, 0, 0}
+3: j = 10
+2: i = 1
+1: k = 10
+(gdb) next
+i = 1, j = 10, k = 10           a = {0, 10, 0, 0}
+30          for(i = 0; i < OVERFLOW; i++) {
+4: a = {0, 10, 0, 0}
+3: j = 10
+2: i = 1
+1: k = 10
+(gdb) next
+31              a[i] = i * 10;
+4: a = {0, 10, 0, 0}
+3: j = 10
+2: i = 2
+1: k = 10
+(gdb) next
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+4: a = {0, 10, 20, 0}
+3: j = 10
+2: i = 2
+1: k = 10
+(gdb) next
+33              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+4: a = {0, 10, 20, 0}
+3: j = 10
+2: i = 2
+1: k = 10
+(gdb) next
+i = 2, j = 10, k = 10           a = {0, 10, 20, 0}
+30          for(i = 0; i < OVERFLOW; i++) {
+4: a = {0, 10, 20, 0}
+3: j = 10
+2: i = 2
+1: k = 10
+(gdb) next
+31              a[i] = i * 10;
+4: a = {0, 10, 20, 0}
+3: j = 10
+2: i = 3
+1: k = 10
+(gdb) next
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+4: a = {0, 10, 20, 30}
+3: j = 10
+2: i = 3
+1: k = 10
+(gdb) next
+33              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+4: a = {0, 10, 20, 30}
+3: j = 10
+2: i = 3
+1: k = 10
+(gdb) next
+i = 3, j = 10, k = 10           a = {0, 10, 20, 30}
+30          for(i = 0; i < OVERFLOW; i++) {
+4: a = {0, 10, 20, 30}
+3: j = 10
+2: i = 3
+1: k = 10
+(gdb) next
+31              a[i] = i * 10;
+4: a = {0, 10, 20, 30}
+3: j = 10
+2: i = 4
+1: k = 10
+(gdb) next
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+4: a = {0, 10, 20, 30}
+3: j = 10
+2: i = 40
+1: k = 10
+(gdb) next
+33              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+4: a = {0, 10, 20, 30}
+3: j = 10
+2: i = 40
+1: k = 10
+(gdb) next
+i = 40, j = 10, k = 10          a = {0, 10, 20, 30}
+30          for(i = 0; i < OVERFLOW; i++) {
+4: a = {0, 10, 20, 30}
+3: j = 10
+2: i = 40
+1: k = 10
+(gdb) next
+37          return 0;
+4: a = {0, 10, 20, 30}
+3: j = 10
+2: i = 41
+1: k = 10
+(gdb) next
+38      }
+4: a = {0, 10, 20, 30}
+3: j = 10
+2: i = 41
+1: k = 10
+(gdb) next
+__libc_start_main (main=0x400584 <main>, argc=1, ubp_av=0x7fffffffebc8, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffffffebb8) at libc-start.c:258
+258     libc-start.c: No such file or directory.
+(gdb) next
+[Inferior 1 (process 63321) exited normally]
+(gdb) next
+The program is not being run.
+(gdb) quit
+]0;g3bhawan@greywolf:~/csc209labs/e2[19:09:01] [33m^_^[0m[g3bhawan@greywolf:~/csc209labs/e2]$ [Kexit
+exit
+
+Script done on Mon Jan 20 19:09:03 2014
